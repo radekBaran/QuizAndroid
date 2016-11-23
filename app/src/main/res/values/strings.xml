@@ -1,8 +1,9 @@
 <resources>
     <string name="app_name">Quiz</string>
     <string-array name="difficulty_levels">
-        <item>Łatwy</item>
-        <item>Średni</item>
-        <item>Trudny</item>
+        <item>Choose level</item>
+        <item>Easy</item>
+        <item>Medium</item>
+        <item>Hard</item>
     </string-array>
 </resources>

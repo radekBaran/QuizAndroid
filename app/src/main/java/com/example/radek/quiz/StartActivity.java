@@ -1,16 +1,17 @@
 package com.example.radek.quiz;
 
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class StartActivity extends AppCompatActivity {
+
     @BindView(R.id.player_name)
     protected EditText mName;
     @BindView(R.id.player_surname)
@@ -18,7 +19,7 @@ public class StartActivity extends AppCompatActivity {
     @BindView(R.id.difficulty)
     protected Spinner mSpinner;
 
-    private SharedPreferences mPrefs;
+    private UserPreferences mPrefs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,9 +27,10 @@ public class StartActivity extends AppCompatActivity {
         setContentView(R.layout.activity_start);
         ButterKnife.bind(this);
 
-        mPrefs = getSharedPreferences("user", MODE_PRIVATE);
-        mName.setText(mPrefs.getString("username", ""));
-        mSurname.setText(mPrefs.getString("usersurname", ""));
+        mPrefs = new UserPreferences(this);
+        mName.setText(mPrefs.getUsername());
+        mSurname.setText(mPrefs.getUsersurname());
+        mSpinner.setSelection(mPrefs.getLevel());
 
     }
 
@@ -43,8 +45,20 @@ public class StartActivity extends AppCompatActivity {
             mSurname.setError("Brak nazwiska !");
             return;
         }
-        // TODO Zapamietywanie nazwy gracza i poziomu trudnosci
-        mPrefs.edit().putString("username", name).putString("usersurname", surname).apply();
+
+        // Sprawdzenie czy wybrano poziom trudności
+        int selectedLevel = mSpinner.getSelectedItemPosition();
+        if (selectedLevel == 0) {
+            Toast.makeText(this, "Wybierz poziom trudności", Toast.LENGTH_LONG).show();
+            return;
+        }
+
+        // Zapamietywanie nazwy gracza i poziomu trudnosci
+        mPrefs.setUsername(name);
+        mPrefs.setUsersurname(surname);
+        mPrefs.setLevel(selectedLevel);
+
+
         // TODO Losowanie puli pytan
         // TODO Otwarcie nowego ekranu
     }
