@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+    <RelativeLayout
+        android:id="@+id/activity_question"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        tools:context="com.example.radek.quiz.QuestionActivity">
+
+        <TextView
+            android:id="@+id/question_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Tutaj będzie wpisana treść pytania, a narazie to jest podgląd "
+            android:textStyle="bold"
+            android:layout_marginBottom="15dp"
+            android:layout_marginTop="10dp"/>
+
+        <RadioGroup
+            android:id="@+id/answers"
+            android:layout_below="@id/question_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginBottom="15dp">
+
+            <RadioButton
+                android:id="@+id/answer_a"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Odpowiedź 1"
+                android:layout_marginBottom="20dp"/>
+            <RadioButton
+                android:id="@+id/answer_b"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Odpowiedź 2"
+                android:layout_marginBottom="20dp"/>
+            <RadioButton
+                android:id="@+id/answer_c"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Odpowiedź 3"
+                android:layout_marginBottom="20dp"/>
+        </RadioGroup>
+
+        <Button
+            android:id="@+id/btn_previous"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Previous"
+            android:layout_below="@id/answers"/>
+        <Button
+            android:id="@+id/next"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Next"
+            android:layout_below="@id/answers"
+            android:layout_alignParentRight="true"/>
+
+
+    </RelativeLayout>
+</ScrollView>

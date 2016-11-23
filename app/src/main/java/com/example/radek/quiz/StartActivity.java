@@ -1,5 +1,6 @@
 package com.example.radek.quiz;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.EditText;
@@ -61,5 +62,7 @@ public class StartActivity extends AppCompatActivity {
 
         // TODO Losowanie puli pytan
         // TODO Otwarcie nowego ekranu
+        Intent questionIntent = new Intent(this, QuestionActivity.class);
+        startActivity(questionIntent);
     }
 }
