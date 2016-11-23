@@ -65,7 +65,7 @@ public class StartActivity extends AppCompatActivity {
 
 
         // Losowanie puli pytan
-        QuestionDatabase db = null;
+        QuestionDatabase db = new MemoryQuestionDatabase();
         List<Question> questions = db.getQuestions(selectedLevel);
         Random random = new Random();
         while (questions.size() > 5) {
