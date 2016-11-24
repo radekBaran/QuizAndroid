@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -25,6 +26,8 @@ public class QuestionActivity extends AppCompatActivity {
     protected RadioGroup mAnswers;
     @BindViews({R.id.answer_a, R.id.answer_b, R.id.answer_c})
     protected List<RadioButton> mAnswerButtons;
+    @BindView(R.id.btn_next)
+    protected Button mNextButton;
 
     private int mCurrentQuestion = 0;
     private List<Question> mQuestions;
@@ -78,6 +81,7 @@ public class QuestionActivity extends AppCompatActivity {
         if (mAnswersArray[mCurrentQuestion] > 0) {
             mAnswers.check(mAnswersArray[mCurrentQuestion]);
         }
+        mNextButton.setText(mCurrentQuestion < mQuestions.size() -1 ? "Next" : "Finish");
      }
 
     @OnClick(R.id.btn_previous)
@@ -96,15 +100,16 @@ public class QuestionActivity extends AppCompatActivity {
     protected void onNextClicl() {
         // zapisanie udzielonej odpowiedzi na aktualne pytanie
         mAnswersArray[mCurrentQuestion] = mAnswers.getCheckedRadioButtonId();
+        // Sprawdzamy czy użytkownik wybrał cokolwiek (getCheckRadioButtonId zwroci cos innego niz
+        if(mAnswersArray[mCurrentQuestion] == -1) {
+            Toast.makeText(this, "Wybierz odpowiedź", Toast.LENGTH_LONG).show();
+            return;
+        }
+        // Obsługa ostatniego pytania
         if(mCurrentQuestion == mQuestions.size() - 1) {
             int correctAnswers = countCorrectAnswers();
             int totalAnswers = mAnswersArray.length;
             displayResults(correctAnswers, totalAnswers);
-            return;
-        }
-        // Sprawdzamy czy użytkownik wybrał cokolwiek (getCheckRadioButtonId zwroci cos innego niz
-        if(mAnswersArray[mCurrentQuestion] == -1) {
-            Toast.makeText(this, "Wybierz odpowiedź", Toast.LENGTH_LONG).show();
             return;
         }
         mCurrentQuestion++;
