@@ -1,9 +1,7 @@
 package com.example.radek.quiz;
 
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Button;
 import android.widget.RadioButton;
@@ -43,6 +41,30 @@ public class QuestionActivity extends AppCompatActivity {
 
         mQuestions = (List<Question>) getIntent().getSerializableExtra("questions");
         mAnswersArray = new int[mQuestions.size()];
+        refreshQuestionView();
+    }
+
+    // Zapis stanu aplikacji przed zniszczeniem starej Activity przy obrocie
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+
+        // zapisanie udzielonej odpowiedzi na aktualne pytanie
+        mAnswersArray[mCurrentQuestion] = mAnswers.getCheckedRadioButtonId();
+
+        // Zapisanie biezacej pozycji pytania
+        outState.putInt("position", mCurrentQuestion);
+
+        // Zapisanie tablicy z udzielonymi odpowiedziami przez uzytkownika
+        outState.putIntArray("answers", mAnswersArray);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        mCurrentQuestion = savedInstanceState.getInt("position");
+        mAnswersArray = savedInstanceState.getIntArray("answers");
+
         refreshQuestionView();
     }
 
@@ -117,18 +139,8 @@ public class QuestionActivity extends AppCompatActivity {
     }
 
     private void displayResults(int correctAnswers, int totalAnswers) {
-        AlertDialog dialog = new AlertDialog.Builder(this)
-                .setTitle("Wynik quizu")
-                .setCancelable(false)
-                .setMessage("Odpowiedziałeś poprawnie na " + correctAnswers + " pytań z " + totalAnswers)
-                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        finish();
-                    }
-                })
-                .create();
-        dialog.show();
+        QuizResultsDialog.newInstance(correctAnswers, totalAnswers)
+                .show(getSupportFragmentManager(), null);
     }
 
     private int countCorrectAnswers() {
