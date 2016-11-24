@@ -1,8 +1,9 @@
 package com.example.radek.quiz;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Question {
+public class Question implements Serializable{
     private String content;
     private int difficulty;
     private List<String> answers;

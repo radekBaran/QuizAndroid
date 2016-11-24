@@ -7,6 +7,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Random;
@@ -79,6 +80,7 @@ public class StartActivity extends AppCompatActivity {
 
         // Otwarcie nowego ekranu
         Intent questionIntent = new Intent(this, QuestionActivity.class);
+        questionIntent.putExtra("questions", new ArrayList<>(questions));
         startActivity(questionIntent);
     }
 }
