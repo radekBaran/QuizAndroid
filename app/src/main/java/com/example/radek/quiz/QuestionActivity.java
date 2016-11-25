@@ -109,7 +109,7 @@ public class QuestionActivity extends AppCompatActivity {
             mAnswers.check(mAnswersArray[mCurrentQuestion]);
         }
         mNextButton.setBackground((mCurrentQuestion < mQuestions.size() -1 ?
-                ContextCompat.getDrawable(this, R.drawable.next_btn) : ContextCompat.getDrawable(this, R.drawable.finish_btn)));
+                ContextCompat.getDrawable(this, R.drawable.next_btn) : ContextCompat.getDrawable(this, R.drawable.finish_button)));
      }
 
     @OnClick(R.id.btn_previous)
