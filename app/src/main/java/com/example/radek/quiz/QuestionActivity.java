@@ -83,7 +83,7 @@ public class QuestionActivity extends AppCompatActivity {
             // Ustawić flage na true
             mFirstBackClicked = true;
             // pokazac toast
-            Toast.makeText(this, "Kliknij ponownie, aby wyjść !", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Tap again to quit !", Toast.LENGTH_LONG).show();
             // uruchomi odliczanie (1-2 sek) i po tym czasie ustawic na flage ponownie na false
             new Handler().postDelayed(new Runnable() {
                 @Override
@@ -130,7 +130,7 @@ public class QuestionActivity extends AppCompatActivity {
         mAnswersArray[mCurrentQuestion] = mAnswers.getCheckedRadioButtonId();
         // Sprawdzamy czy użytkownik wybrał cokolwiek (getCheckRadioButtonId zwroci cos innego niz
         if(mAnswersArray[mCurrentQuestion] == -1) {
-            Toast.makeText(this, "Wybierz odpowiedź", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Choose answer", Toast.LENGTH_LONG).show();
             return;
         }
         // Obsługa ostatniego pytania

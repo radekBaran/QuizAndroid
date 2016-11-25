@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:tools="http://schemas.android.com/tools"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
 
     <RelativeLayout
@@ -19,53 +20,55 @@
             android:id="@+id/question_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Tutaj będzie wpisana treść pytania, a narazie to jest podgląd "
-            android:textStyle="bold"
             android:layout_marginBottom="15dp"
-            android:layout_marginTop="10dp"/>
+            android:layout_marginTop="10dp"
+            android:text="Tutaj będzie wpisana treść pytania, a narazie to jest podgląd "
+            android:textStyle="bold"/>
 
         <RadioGroup
             android:id="@+id/answers"
-            android:layout_below="@id/question_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginBottom="15dp">
+            android:layout_below="@id/question_text"
+            android:layout_marginBottom="15dp"
+            android:orientation="vertical">
 
             <RadioButton
                 android:id="@+id/answer_a"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Odpowiedź 1"
-                android:layout_marginBottom="20dp"/>
+                android:layout_marginBottom="20dp"
+                android:text="Odpowiedź 1"/>
+
             <RadioButton
                 android:id="@+id/answer_b"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Odpowiedź 2"
-                android:layout_marginBottom="20dp"/>
+                android:layout_marginBottom="20dp"
+                android:text="Odpowiedź 2"/>
+
             <RadioButton
                 android:id="@+id/answer_c"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Odpowiedź 3"
-                android:layout_marginBottom="20dp"/>
+                android:layout_marginBottom="20dp"
+                android:text="Odpowiedź 3"/>
         </RadioGroup>
 
         <Button
             android:id="@+id/btn_previous"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/prev_btn"
-            android:textAllCaps="false"
-            android:layout_below="@id/answers"/>
+            android:layout_below="@id/answers"
+            android:background="@drawable/prev_btn"/>
+
         <Button
             android:id="@+id/btn_next"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/next_btn"
+            android:layout_alignParentRight="true"
             android:layout_below="@id/answers"
-            android:layout_alignParentRight="true"/>
+            android:background="@drawable/next_btn"/>
 
     </RelativeLayout>
 </ScrollView>

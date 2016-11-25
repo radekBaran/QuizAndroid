@@ -87,7 +87,7 @@ public class StartActivity extends AppCompatActivity {
         // Sprawdzenie czy wybrano poziom trudności
         int selectedLevel = mSpinner.getSelectedItemPosition();
         if (selectedLevel == 0) {
-            Toast.makeText(this, "Check level", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Choose level", Toast.LENGTH_LONG).show();
             return;
         }
 

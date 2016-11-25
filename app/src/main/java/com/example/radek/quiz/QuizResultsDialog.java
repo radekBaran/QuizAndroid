@@ -30,7 +30,7 @@ public class QuizResultsDialog extends DialogFragment {
 
         AlertDialog dialog = new AlertDialog.Builder(getContext())
                 .setTitle("Quiz result")
-                .setMessage("Odpowiedziałeś poprawnie na " + correctAnswers + " pytań z " + totalAnswers)
+                .setMessage("You answered " + correctAnswers + " questions from " + totalAnswers)
                 .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
