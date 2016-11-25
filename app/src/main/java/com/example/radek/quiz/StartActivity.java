@@ -3,6 +3,7 @@ package com.example.radek.quiz;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -32,12 +33,43 @@ public class StartActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);
         ButterKnife.bind(this);
+        Log.d("StartActivity", "onCreate");
 
         mPrefs = new UserPreferences(this);
         mName.setText(mPrefs.getUsername());
         mSurname.setText(mPrefs.getUsersurname());
         mSpinner.setSelection(mPrefs.getLevel());
 
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Log.d("StartActivity", "onStart");
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.d("StartActivity", "onResume");
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Log.d("StartActivity", "onPause");
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.d("StartActivity", "onStop");
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.d("StartActivity", "onDestroy");
     }
 
     @OnClick(R.id.btn_play)
@@ -76,7 +108,7 @@ public class StartActivity extends AppCompatActivity {
         // Przetasowujemy kolekcje pozostalych pytan aby kolejnosc rowniez byla losowa
         Collections.shuffle(questions);
 
-        // TODO : Przekazanie lub zapisanie wylosowanych pytan na potrzeby nastepnego ekranu
+        // TODO: Przekazanie lub zapisanie wylosowanych pytan na potrzeby nastepnego ekranu
 
         // Otwarcie nowego ekranu
         Intent questionIntent = new Intent(this, QuestionActivity.class);
