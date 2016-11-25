@@ -29,7 +29,7 @@ public class QuizResultsDialog extends DialogFragment {
         setCancelable(false);
 
         AlertDialog dialog = new AlertDialog.Builder(getContext())
-                .setTitle("Wynik quizu")
+                .setTitle("Quiz result")
                 .setMessage("Odpowiedziałeś poprawnie na " + correctAnswers + " pytań z " + totalAnswers)
                 .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override

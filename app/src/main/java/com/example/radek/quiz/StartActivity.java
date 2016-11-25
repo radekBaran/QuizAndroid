@@ -78,16 +78,16 @@ public class StartActivity extends AppCompatActivity {
         String name = mName.getText().toString();
         String surname = mSurname.getText().toString();
         if (name.trim().isEmpty()) {
-            mName.setError("Brak imienia !");
+            mName.setError("No name !");
         } else if (surname.trim().isEmpty()) {
-            mSurname.setError("Brak nazwiska !");
+            mSurname.setError("No surname");
             return;
         }
 
         // Sprawdzenie czy wybrano poziom trudności
         int selectedLevel = mSpinner.getSelectedItemPosition();
         if (selectedLevel == 0) {
-            Toast.makeText(this, "Wybierz poziom trudności", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Check level", Toast.LENGTH_LONG).show();
             return;
         }
 

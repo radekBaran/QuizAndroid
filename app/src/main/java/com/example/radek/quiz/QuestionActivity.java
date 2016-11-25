@@ -2,6 +2,7 @@ package com.example.radek.quiz;
 
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.Button;
@@ -44,36 +45,6 @@ public class QuestionActivity extends AppCompatActivity {
         mQuestions = (List<Question>) getIntent().getSerializableExtra("questions");
         mAnswersArray = new int[mQuestions.size()];
         refreshQuestionView();
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        Log.d("QuestionActivity", "onStart");
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        Log.d("QuestionActivity", "onResume");
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        Log.d("QuestionActivity", "onPause");
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        Log.d("QuestionActivity", "onStop");
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        Log.d("QuestionActivity", "onDestroy");
     }
 
     // Zapis stanu aplikacji przed zniszczeniem starej Activity przy obrocie
@@ -137,7 +108,8 @@ public class QuestionActivity extends AppCompatActivity {
         if (mAnswersArray[mCurrentQuestion] > 0) {
             mAnswers.check(mAnswersArray[mCurrentQuestion]);
         }
-        mNextButton.setText(mCurrentQuestion < mQuestions.size() -1 ? "Next" : "Finish");
+        mNextButton.setBackground((mCurrentQuestion < mQuestions.size() -1 ?
+                ContextCompat.getDrawable(this, R.drawable.next_btn) : ContextCompat.getDrawable(this, R.drawable.finish_btn)));
      }
 
     @OnClick(R.id.btn_previous)
